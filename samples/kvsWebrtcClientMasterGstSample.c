@@ -224,7 +224,7 @@ PVOID sendGstreamerAudioVideo(PVOID args)
                                  // "videoconvert ! "
                                  // "x264enc name=sampleVideoEncoder bframes=0 speed-preset=veryfast bitrate=512 byte-stream=TRUE tune=zerolatency ! "
                                  "video/x-h264,stream-format=byte-stream,alignment=au,profile=baseline ! queue ! "
-                                 "appsink sync=TRUE emit-signals=TRUE name=appsink-video ",
+                                 "appsink sync=FALSE emit-signals=TRUE name=appsink-video ",
                                  pSampleConfiguration->rtspUri);
 
                     if (stringOutcome > RTSP_PIPELINE_MAX_CHAR_COUNT) {

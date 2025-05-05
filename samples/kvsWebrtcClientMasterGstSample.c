@@ -220,9 +220,9 @@ PVOID sendGstreamerAudioVideo(PVOID args)
                 case RTSP_SOURCE: {
                     UINT16 stringOutcome =
                         SNPRINTF(rtspPipeLineBuffer, RTSP_PIPELINE_MAX_CHAR_COUNT,
-                                 "uridecodebin uri=%s ! "
-                                 "videoconvert ! "
-                                 "x264enc name=sampleVideoEncoder bframes=0 speed-preset=veryfast bitrate=512 byte-stream=TRUE tune=zerolatency ! "
+                                 "rtspsrc location=%s ! rtph264depay ! "
+                                 // "videoconvert ! "
+                                 // "x264enc name=sampleVideoEncoder bframes=0 speed-preset=veryfast bitrate=512 byte-stream=TRUE tune=zerolatency ! "
                                  "video/x-h264,stream-format=byte-stream,alignment=au,profile=baseline ! queue ! "
                                  "appsink sync=TRUE emit-signals=TRUE name=appsink-video ",
                                  pSampleConfiguration->rtspUri);
